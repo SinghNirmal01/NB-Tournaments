@@ -1,0 +1,13 @@
+/* Custom class for the vibrate animation */
+.animate-vibrate {
+animation: vibrate 0.3s ease-in-out;
+}
+
+@keyframes vibrate {
+0%, 100% {outline:2px solid  #ff0909; transform: translateX(0);
+}
+20%, 60% {outline:2px solid #c40101 ; transform: translateX(-6px);
+}
+40%, 80% {outline:2px solid #fd5b5b ; transform: translateX(6px);
+}
+}

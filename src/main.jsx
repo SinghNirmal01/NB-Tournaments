@@ -1,0 +1,23 @@
+import {StrictMode} from 'react';
+import {createRoot} from 'react-dom/client';
+import App from './App.jsx';
+import './index.css';
+import {Provider} from 'react-redux';
+import store from './store/store.js';
+import {BrowserRouter} from 'react-router-dom';
+// Only import Eruda in development mode
+if (import.meta.env.DEV) {
+	import('eruda').then(({default: eruda}) => {
+		eruda.init();
+	});
+}
+
+createRoot(document.getElementById('root')).render(
+//	<StrictMode>
+		<Provider store={store}>
+			<BrowserRouter>
+				<App />
+			</BrowserRouter>
+		</Provider>
+//	</StrictMode>
+);
