@@ -2,11 +2,11 @@ import React, {useState} from 'react';
 import authService from '../appwrite/auth';
 import {Link, useNavigate} from 'react-router-dom';
 import {login} from '../store/authSlice';
-import {Button, Input, Logo} from './Index.js';
+import {Button, Input, Logo} from '../components/Index.js';
 import {useDispatch} from 'react-redux';
 import {useForm} from 'react-hook-form';
 
-function Signup() {
+function SignupPage() {
 	const navigate = useNavigate();
 	const [error, setError] = useState('');
 	const dispatch = useDispatch();
@@ -97,4 +97,4 @@ function Signup() {
 	);
 }
 
-export default Signup;
+export default SignupPage;

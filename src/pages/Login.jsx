@@ -1,16 +1,17 @@
 import React, {useState, useEffect} from 'react';
 import {Link, useNavigate} from 'react-router-dom';
-import {login as authLogin} from '../store/authSlice';
-import {Button, Input, Logo} from './Index';
+import {login as authLogin, setProfile} from '../store/authSlice';
+import {Button, Input, Logo} from '../components/Index.js';
 import {useDispatch} from 'react-redux';
 import authService from '../appwrite/auth';
+import profileService from '../appwrite/profileService.js';
 import {useForm} from 'react-hook-form';
 import {FontAwesomeIcon} from '@fortawesome/react-fontawesome';
 import {faEnvelope, faLock} from '@fortawesome/free-solid-svg-icons';
 
 import '../Vibrate.css';
 
-function Login() {
+function LoginPage() {
 	const navigate = useNavigate();
 	const dispatch = useDispatch();
 	const {register, handleSubmit} = useForm();
@@ -18,6 +19,23 @@ function Login() {
 	const [password, setPassword] = useState('');
 	const [loading, setLoading] = useState(false);
 	const [hasError, setHasError] = useState(false);
+
+	useEffect(() => {
+		const checkUser = async () => {
+			try {
+				const currentUser = await authService.getCurrentUser();
+
+				if (currentUser) {
+					navigate('/');
+
+					dispatch(authLogin({userData: currentUser}));
+				}
+			} catch (err) {
+				console.log('Error fetching user:', err);
+			}
+		};
+		checkUser();
+	}, [dispatch]);
 
 	const login = async data => {
 		setLoading(true);
@@ -67,19 +85,22 @@ function Login() {
 
 				<form
 					onSubmit={handleSubmit(login)}
-					className={`mt-8 bg-[rgba(0,0,0,0.5)] p-4 rounded-lg text-white ${hasError ? 'animate-vibrate' : ''}`}
+					className={`mt-8 bg-[rgba(0,0,0,0.5)] p-4 rounded-lg text-white ${
+						hasError ? 'animate-vibrate' : ''
+					}`}
 				>
 					<div className='text-center  text-xl my-4  leading-tight'>
-						<h2 className='text-sm'>Welcome Back To</h2>{' '}
+						<h2 className='text-sm'>Welcome Back To</h2>
 						<div className='my-1 font-medium  drop-shadow-[0_0_8px_rgba(255,255,255,1)] '>
 							NB Tournaments
 						</div>
 					</div>
 					<div className='space-y-5'>
 						<Input
-							label='Email: '
+							label='Email'
 							placeholder='Enter your email'
 							type='email'
+							className='focus:ring-2 focus:ring-orange-500 '
 							icon={<FontAwesomeIcon icon={faEnvelope} />}
 							{...register('email', {
 								required: true,
@@ -93,7 +114,8 @@ function Login() {
 							})}
 						/>
 						<Input
-							label='Password: '
+							className=''
+							label='Password'
 							type='password'
 							icon={<FontAwesomeIcon icon={faLock} />}
 							placeholder='Enter your password'
@@ -104,9 +126,7 @@ function Login() {
 
 						<Button
 							type='submit'
-							className={`w-full ${
-								loading ? 'bg-blue-400' : ''
-							} `}
+							className={`w-full bg-blue-600 hover:bg-blue-500 active:translate-y-[2px] active:shadow-md `}
 							loading={loading}
 							disabled={loading}
 						>
@@ -124,7 +144,7 @@ function Login() {
 					Don&apos;t have any account?&nbsp;
 					<Link
 						to='/signup'
-						className='font-medium gon font-bold text-primary transition-all duration-200 hover:underline'
+						className='font-medium font-bold text-black-500 active:text-blue-600 transition-colors duration-300'
 					>
 						create one
 					</Link>
@@ -134,4 +154,4 @@ function Login() {
 	);
 }
 
-export default Login;
+export default LoginPage;

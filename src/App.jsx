@@ -29,7 +29,7 @@ function App() {
 
 				console.log(err);
 			})
-			.finally(() => {
+			.finally((err) => {
 				setLoading(false);
 			});
 	}, []);

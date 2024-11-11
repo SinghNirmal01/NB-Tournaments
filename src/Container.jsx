@@ -1,6 +1,6 @@
 import React from 'react';
 import {useNavigate, Route, Routes} from 'react-router-dom';
-import {LoginPage, SignupPage, Home} from './components/Index.js';
+import {LoginPage, SignupPage, Home, Profile, Tournament} from './pages/index.js';
 import PrivateRoutes from './utils/PrivateRoutes.jsx';
 function Container() {
 	return (
@@ -8,7 +8,15 @@ function Container() {
 			<Route element={<PrivateRoutes />}>
 				<Route
 					path='/'
-					element={ <Home />}
+					element={<Home />}
+				/>
+				<Route
+					path='/profile'
+					element={<Profile />}
+				/>
+				<Route
+					path='/tournament'
+					element={<Tournament />}
 				/>
 			</Route>
 			<Route

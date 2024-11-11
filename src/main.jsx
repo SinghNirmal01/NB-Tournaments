@@ -13,11 +13,11 @@ if (import.meta.env.DEV) {
 }
 
 createRoot(document.getElementById('root')).render(
-//	<StrictMode>
+	<StrictMode>
 		<Provider store={store}>
 			<BrowserRouter>
 				<App />
 			</BrowserRouter>
 		</Provider>
-//	</StrictMode>
+	</StrictMode>
 );

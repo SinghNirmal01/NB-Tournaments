@@ -2,34 +2,48 @@ import {useEffect, useState} from 'react';
 import {Outlet, Navigate, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import authService from '../appwrite/auth';
-import {login as setUser} from '../store/authSlice'; // Action to set user in Redux
+import profileService from '../appwrite/profileService.js';
+
+import {login as setUser, setProfile} from '../store/authSlice'; // Action to set user in Redux
 
 const PrivateRoutes = () => {
 	const dispatch = useDispatch();
-  const [userData, setUserData] = useState(null)
-  const navigate= useNavigate()
+	const [userData, setUserData] = useState(null);
+	const [userProfile, setUserProfile] = useState(null);
+	const navigate = useNavigate();
 	useEffect(() => {
 		const checkUser = async () => {
 			try {
 				const currentUser = await authService.getCurrentUser();
-				console.log(currentUser);
-			  setUserData(currentUser)
+				setUserData(currentUser);
 				if (currentUser) {
 					dispatch(setUser({userData: currentUser})); // Update Redux with the user data
-				}
-				else {
-				  navigate("/login")
+					try {
+						const profile = await profileService.getProfile(
+							currentUser['$id']
+						);
+						if (profile) {
+							setUserProfile(profile);
+							dispatch(setProfile({profileData: profile})); // Update Redux with the user data
+						} else {
+							navigate('/profile');
+						}
+					} catch (err) {
+						navigate('/profile');
+						console.log('Error getting profile:', err.message);
+					}
+				} else {
+					navigate('/login');
 				}
 			} catch (err) {
 				console.log('Error fetching user:', err);
+				navigate('/login');
 			}
 		};
 		checkUser();
 	}, [dispatch]);
-
 	
-	console.log(userData);
-	return userData ? <Outlet /> : null;
+	return userData ? <Outlet /> : <h1>pr-loading</h1>;
 };
 
 export default PrivateRoutes;
