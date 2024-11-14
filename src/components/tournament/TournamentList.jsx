@@ -18,11 +18,11 @@ const TournamentList = () => {
 
 	const [displayTournaments, setDisplayTournaments] = useState(tournaments);
 	return (
-		<div className='w-full text-center pb-4 overflow-hidden'>
-			<div className='flex flex-col justify-center items-center'>
-				<div className='w-full p-4 font-rajdhani font-bold bg-[#eof2f1] dark:bg-stone-900 border-2 dark:border-stone-700 border-[#81C784]  border-b-0 rounded-t-lg text-[#333333] dark:text-white '>
+		<div className='w-full  text-center pb-4 overflow-hidden'>
+			<div className='flex  flex-col justify-center items-center border-2 dark:border-[#ffffff] border-[#333333] '>
+				<div className='w-full p-4 font-rajdhani font-bold bg-[#ff7272]   text-[#fff]  '>
 					<div
-						className='bg-[#66bb6a] p-2 rounded-full duration-300 text-[0.8em] active:scale-90'
+						className='bg-[#3e95ff] p-2 rounded-full duration-300 text-[0.8em] active:scale-90'
 						onClick={() => {
 							setSwapping(true);
 							setTimeout(() => {
@@ -34,9 +34,9 @@ const TournamentList = () => {
 						All Tournaments : {tournaments.length}
 					</div>
 				</div>
-				<div className='w-full bg-[#cfd8dc] dark:bg-stone-800 border-2 dark:border-stone-700 border-t-0 rounded-b-lg flex justify-around p-2 text-[0.5em] font-montserrat text-[#333333] dark:text-white '>
+				<div className='w-full bg-[#ff7272] border-t-2    flex justify-around p-2 text-[0.5em] font-montserrat text-[#333333] dark:border-[#333333]  '>
 					<div
-						className='bg-[#adffda] dark:bg-teal-700/70  px-3 py-1 rounded-full  leading-tight  transition duration-400 active:-translate-y-1/4'
+						className='bg-sky-400 font-bold dark:bg-sky-700 dark:text-white border-2 border-black dark:border-white px-3 py-1 rounded-full  leading-tight  transition duration-400 active:-translate-y-1/4'
 						onClick={() => {
 							setSwapping(true);
 							setTimeout(() => {
@@ -49,7 +49,7 @@ const TournamentList = () => {
 						<div>{upcomingTournaments.length}</div>
 					</div>
 					<div
-						className='bg-[#FF7043] dark:bg-teal-700/30  px-3 py-1 rounded-full  leading-tight  transition duration-400 active:-translate-y-1/4 '
+						className='bg-sky-400 font-bold dark:bg-sky-700 dark:text-white border-2 border-black dark:border-white px-3 py-1 rounded-full  leading-tight  transition duration-400 active:-translate-y-1/4'
 						onClick={() => {
 							setSwapping(true);
 							setTimeout(() => {
@@ -62,7 +62,7 @@ const TournamentList = () => {
 						<div>{ongoingTournaments.length}</div>
 					</div>
 					<div
-						className='bg-[#f2aa2f] dark:bg-teal-700/30  px-3 py-1 rounded-full  leading-tight  transition  active:-translate-y-1/4'
+						className='bg-sky-400 font-bold dark:bg-sky-700 dark:text-white border-2 border-black dark:border-white px-3 py-1 rounded-full  leading-tight  transition duration-400 active:-translate-y-1/4'
 						onClick={() => {
 							setSwapping(true);
 							setTimeout(() => {

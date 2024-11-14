@@ -53,7 +53,8 @@ const TournamentCard = ({tournament}) => {
 	}, [tournament.date]);
 
 	return (
-		<div className=' bg-[#2e2e2e] w-[80%] rounded-lg text-center text-white m-4 p-2 relative min-h-[100px] max-w-xl mx-auto border-2 font-poppins border-stone-700 z-50'>
+		<div className='bg-white dark:bg-[#2e2e2e] w-[80%] rounded-lg rounded-tl-none text-center text-white m-4 p-2 relative min-h-[100px] max-w-xl mx-auto border-2 font-poppins border-stone-700 z-50'>
+			{/*
 			<div
 				className={`absolute right-0 top-0 p-0 rounded-l-full   min-w-[30%] font-lato px-2 text-[0.7em] 
 				${status === 'upcoming' ? 'bg-cyan-500/90' : ''}
@@ -64,45 +65,29 @@ const TournamentCard = ({tournament}) => {
 				 `}
 			>
 				{tournament && status}
-			</div>
+			</div>*/}
+			<div
+				className={`absolute left-0 top-0 px-4  rounded-br-full   min-w-[30%] font-lato px-2 text-[0.7em]  bg-rose-600 
 
-			<div className='mb-8'>
-				<div className='mx-auto mt-8 w-4/5 p-1 text-[0.75em] bg-teal-700 border-2 border-white/50 rounded-t-md'>
+				 `}
+			>
+				FreeFire
+			</div>
+			<div className='mb-8 bg-rose-200 rounded-xl '>
+				<div className='mx-auto mt-8 p-1 text-xl text-black dark:text-white font-extrabold tracking-wider'>
 					{tournament && tournament.name}
 				</div>
-				<div className='text-white mx-auto  w-4/5 p-2  text-sm bg-teal-900 border-2 border-t-0 border-white/50 ?border-teal-700/50 lowercase rounded-b-lg  break-words z-50 relative'>
+				<div className='text-black dark:text-white mx-auto  w-4/5 p-2  text-[0.7em]  lowercase  break-words z-50 relative'>
 					{tournament && tournament.description}
 				</div>
-
-				<div
-					className={`w-4/6 mx-auto rounded-b-xl border-2 border-t-0 border-white/50  min-w-[30%] font-bold text-[0.5em] uppercase bg-cyan-500/50 
-					leading-tight
-          relative duration-1000 ${!show ? '-translate-y-1/2' : ''}
-				 `}
-				>
-					<div className='tracking-widest'>
-						{timeLeft && timeLeft}
-					</div>
-					<div
-						className={`p-[2px] ${show ? 'rotate-180' : ''}`}
-						onClick={() => setshow(!show)}
-					>
-						<FontAwesomeIcon icon={faCircleDown} />
-					</div>
-				</div>
-			</div>
-			<div className='relative mb-8 border-2 border-white rounded-full'>
-				<div className='absolute z-[-50] inset-0 h-4 bg-stone-700/50 rounded-full '></div>
-				<div
-					className={`z-100 h-4 bg-green-900 rounded-full w-[72%]  flex justify-center items-center `}
-				>
-					<div className='text-[0.4em]  leading-relaxed'>50/100</div>
+				<div className='sticky bottom-0 text-black text-sm text-center w-5/6 mx-auto bg-rose-700 p-1 rounded-t-full text-white'>
+					{timeLeft && timeLeft}
 				</div>
 			</div>
 
 			<div>
 				<button
-					className='px-4 p-2 bg-cyan-700 text-[0.7em]  rounded-full font-nunito active:bg-cyan-700/50 '
+					className='px-4 p-2  bg-sky-700 dark:bg-sky-200 text-[0.7em] dark:text-black uppercase  font-extrabold  rounded-full   active:bg-sky-700/50 dark:active:bg-sky-200/50'
 					onClick={handleJoin}
 				>
 					join now

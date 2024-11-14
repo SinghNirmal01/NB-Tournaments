@@ -17,8 +17,8 @@ const Home = () => {
 	const [currentScreen, setCurrentScreen] = useState('home');
 	return (
 		<>
-			<div className='bg-[#f9f9f9]  w-full min-h-[100dvh] mx-auto text-center text-2xl text-[#2E7D32] bg-[#dbeddc] dark:bg-slate-800 select-none font-bebas tracking-wide '>
-				<div className='p-2 px-4 w-full  top-0 bg-[#f9f9f9] dark:bg-[#121212] text-[#333333] dark:text-[#FFFFFF]  border-b-2 border-[#81C784]   rounded-b-lg flex justify-between items-center z-[50] text-white'>
+			<div className='bg-[#e1e1cb] dark:bg-slate-800  w-full min-h-[100dvh] mx-auto text-center text-2xl text-[#333332] dark:text-[#ffffff] select-none font-bebas tracking-wide '>
+				<div className='p-2 px-4 w-full  top-0 bg-[#dd0000] text-white      flex justify-between items-center z-[50] '>
 					<div className='w-[20%]  flex'>
 						<FontAwesomeIcon icon={faBars} />
 					</div>
@@ -32,7 +32,7 @@ const Home = () => {
 						<div>
 							<ToggleTheme />
 						</div>
-						<div className='text-[0.7em] bg-[#AAF8D1] dark:bg-[#2c3e50] text-[#E0R0E0] dark:text-[#00FF87] p-1 border-2 border-cyan-500 flex justify-center items-center gap-2 rounded-full font-poppins '>
+						<div className='text-[0.7em] bg-[#0a72ca] dark:bg-[#2c3e50] text-[#00FF87] tracking-tighter p-1 border-2 border-cyan-500 flex justify-center items-center gap-2 rounded-full font-poppins '>
 							<FontAwesomeIcon icon={faWallet} /> : 1 0
 						</div>
 					</div>
@@ -53,7 +53,9 @@ const Home = () => {
 						<Profile />
 					</div>
 				</div>
-				<div className='p-0 pt-4 border-t-2 border-[#81C784] w-full sticky bottom-0 bg-[#f9f9f9] dark:bg-[#121212] text-[#333333] dark:text-[#FFFFFF] rounded-t-lg flex justify-around items-center   font-poppins z-[10000] '>
+
+				{/*footer*/}
+				<div className='p-0 pt-4 border-2 border-t-stone-400  w-full sticky bottom-0 bg-[#f9f9f9] dark:bg-[#121212] text-[#333333] dark:text-[#FFFFFF]  flex justify-around items-center   font-poppins z-[10000] '>
 					<div
 						className={`flex flex-col justify-center items-center w-[20%] duration-500 ${
 							currentScreen == 'tournaments'
