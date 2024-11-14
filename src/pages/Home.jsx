@@ -11,15 +11,15 @@ import {
 
 import {Tournament, Profile} from './index.js';
 // import '../Debug.css';
-import {LogoutBtn} from '../components/Index.js';
+import {LogoutBtn, ToggleTheme} from '../components/Index.js';
 const Home = () => {
 	const userProfile = useSelector(state => state.auth.profileData);
 	const [currentScreen, setCurrentScreen] = useState('home');
 	return (
 		<>
-			<div className='w-full min-h-[100dvh] mx-auto text-center text-2xl bg-slate-800 select-none font-bebas tracking-wide '>
-				<div className='p-2 px-4 w-full  top-0 bg-teal-700 border-b-2  rounded-b-lg flex justify-between items-center z-[50] text-white'>
-					<div className='w-[20%] flex'>
+			<div className='bg-[#f9f9f9]  w-full min-h-[100dvh] mx-auto text-center text-2xl text-[#2E7D32] bg-[#dbeddc] dark:bg-slate-800 select-none font-bebas tracking-wide '>
+				<div className='p-2 px-4 w-full  top-0 bg-[#f9f9f9] dark:bg-[#121212] text-[#333333] dark:text-[#FFFFFF]  border-b-2 border-[#81C784]   rounded-b-lg flex justify-between items-center z-[50] text-white'>
+					<div className='w-[20%]  flex'>
 						<FontAwesomeIcon icon={faBars} />
 					</div>
 					<div className='w-[50%]  leading-[0.75em] '>
@@ -28,8 +28,13 @@ const Home = () => {
 							{userProfile ? userProfile.username : 'back'}
 						</div>
 					</div>
-					<div className='min-w-[20%] text-[0.7em] bg-red-700/90 p-1 border-2 border-cyan-500 flex justify-center items-center gap-2 rounded-full font-poppins'>
-						<FontAwesomeIcon icon={faWallet} /> : 0
+					<div className='flex w-1/2  justify-between items-center  '>
+						<div>
+							<ToggleTheme />
+						</div>
+						<div className='text-[0.7em] bg-[#AAF8D1] dark:bg-[#2c3e50] text-[#E0R0E0] dark:text-[#00FF87] p-1 border-2 border-cyan-500 flex justify-center items-center gap-2 rounded-full font-poppins '>
+							<FontAwesomeIcon icon={faWallet} /> : 1 0
+						</div>
 					</div>
 				</div>
 				<div className=''>
@@ -38,36 +43,35 @@ const Home = () => {
 							currentScreen == 'home' ? ' block' : 'hidden'
 						}`}
 					>
-						{Tournament ? (
-							<Tournament />
-						) : (
-							<div className='animate-pulse space-y-4'>
-								<div className='h-8 bg-gray-300 rounded w-3/4'></div>
-								<div className='h-6 bg-gray-300 rounded w-1/2'></div>
-								<div className='h-6 bg-gray-300 rounded w-full'></div>
-							</div>
-						)}
+						<Tournament />
 					</div>
 					<div
 						className={` ${
-							currentScreen == 'profile' ? ' block' : 'hidden'
+							currentScreen == 'user' ? ' block' : 'hidden'
 						}`}
 					>
 						<Profile />
 					</div>
 				</div>
-				<div className='p-0 pt-4 border-t-2 w-full sticky bottom-0 bg-emerald-700 rounded-t-lg flex justify-around items-center text-white font-poppins z-[10000] '>
+				<div className='p-0 pt-4 border-t-2 border-[#81C784] w-full sticky bottom-0 bg-[#f9f9f9] dark:bg-[#121212] text-[#333333] dark:text-[#FFFFFF] rounded-t-lg flex justify-around items-center   font-poppins z-[10000] '>
 					<div
 						className={`flex flex-col justify-center items-center w-[20%] duration-500 ${
 							currentScreen == 'tournaments'
 								? ' -translate-y-[10%]'
 								: ''
 						}`}
-						onClick={() => setCurrentScreen('tournaments')}
+						onClick={() => {
+							setCurrentScreen('tournaments');
+							window.scrollTo({
+								top: 0
+							});
+						}}
 					>
 						<FontAwesomeIcon
 							className={`duration-500 ${
-								currentScreen == 'home' ? ' scale-[1.2]' : ''
+								currentScreen == 'tournaments'
+									? ' scale-[1.2]'
+									: ''
 							}`}
 							icon={faTrophy}
 						/>
@@ -78,7 +82,12 @@ const Home = () => {
 						className={`flex flex-col justify-center items-center w-[20%] duration-500 ${
 							currentScreen == 'home' ? ' -translate-y-[10%]' : ''
 						}`}
-						onClick={() => setCurrentScreen('home')}
+						onClick={() => {
+							setCurrentScreen('home');
+							window.scrollTo({
+								top: 0
+							});
+						}}
 					>
 						<FontAwesomeIcon
 							className={`duration-500 ${
@@ -92,7 +101,12 @@ const Home = () => {
 						className={`flex flex-col justify-center items-center w-[20%] duration-500 ${
 							currentScreen == 'user' ? ' -translate-y-[10%]' : ''
 						}`}
-						onClick={() => setCurrentScreen('user')}
+						onClick={() => {
+							setCurrentScreen('user');
+							window.scrollTo({
+								top: 0
+							});
+						}}
 					>
 						<FontAwesomeIcon
 							className={`duration-500 ${

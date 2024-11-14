@@ -7,7 +7,11 @@ import {
 	setOngoingTournaments
 } from '../store/tournamentSlice.js';
 import tournamentService from '../appwrite/tournamentService';
-import {TournamentForm, TournamentList} from '../components/Index.js';
+import {
+	TournamentForm,
+	TournamentList,
+	SkeletonLoader
+} from '../components/Index.js';
 
 const TournamentPage = () => {
 	const userData = useSelector(state => state.auth.userData);
@@ -35,7 +39,6 @@ const TournamentPage = () => {
 				tournamentService.getAllTournaments(),
 				tournamentService.getTournamentsByStatus({
 					status: 'upcoming'
-					
 				}),
 				userProfile
 					? tournamentService.getTournamentsByStatus({
@@ -84,7 +87,18 @@ const TournamentPage = () => {
 			</div>
 		</div>
 	) : (
-		<h1>loading- tp</h1>
+		<div className='min-h-screen p-4 mt-4'>
+			<SkeletonLoader
+				rows={1}
+				columns={2}
+			/>
+			<div className='mt-8'>
+				<SkeletonLoader rows={2} />
+			</div>{' '}
+			<div className='mt-8'>
+				<SkeletonLoader rows={4} />
+			</div>
+		</div>
 	);
 };
 

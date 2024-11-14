@@ -121,9 +121,9 @@ const Profile = () => {
 					</Button>
 				</form>
 			) : (
-				<div className='w-full relative mx-auto font-poppins'>
+				<div className='w-full relative mx-auto font-poppins min-h-screen p-4'>
 					<div className='w-full mx-auto  text-white bg-stone-800 rounded-full sticky top-0 z-50'>
-						<div className='bg-emerald-700 p-4 px-2 rounded-2xl flex justify-center items-center gap-2 '>
+						<div className='bg-emerald-700 p-4 px-2 rounded-2xl flex flex-col justify-center items-center gap-2 '>
 							<div>
 								<div className='bg-stone-800 p-6 rounded-full'>
 									<FontAwesomeIcon
@@ -137,8 +137,7 @@ const Profile = () => {
 										icon={faCopy}
 									/>
 									<div className='text-[0.5em]'>
-										{userProfile &&
-											userProfile.$id}
+										{userProfile && userProfile.$id}
 									</div>
 								</div>
 							</div>
@@ -154,6 +153,7 @@ const Profile = () => {
 												userProfile &&
 												userProfile.username
 											}
+											disabled
 										/>
 									</div>
 									<FontAwesomeIcon icon={faPencil} />
@@ -185,40 +185,6 @@ const Profile = () => {
 									</div>
 									<FontAwesomeIcon icon={faPencil} />
 								</div>
-							</div>
-						</div>
-					</div>
-					<div className=' p-4 w-full mx-auto text-black grid grid-cols-1 gap-4 break-all overflow-hidden bg-black/50 backdrop-blur-sm'>
-						<div className='w-full mx-auto bg-white p-2 rounded-lg text-center flex flex-col justify-center items-center'>
-							<div className='text-[0.7em] bg-gray-700 p-2 rounded-t-lg text-white w-full'>
-								username
-							</div>
-							<div className='bg-gray-800 p-2 rounded-b-lg w-full text-emerald-600'>
-								{userProfile.username}
-							</div>
-						</div>
-						<div className='w-full mx-auto bg-white p-2 rounded-lg text-center flex flex-col justify-center items-center'>
-							<div className='text-[0.7em] bg-gray-700 p-2 rounded-t-lg text-white w-full'>
-								email
-							</div>
-							<div className='bg-gray-800 p-2 rounded-b-lg w-full text-emerald-600'>
-								{userProfile.email}
-							</div>
-						</div>
-						<div className='w-full mx-auto bg-white p-2 rounded-lg text-center flex flex-col justify-center items-center'>
-							<div className='text-[0.7em] bg-gray-700 p-2 rounded-t-lg text-white w-full'>
-								player Id
-							</div>
-							<div className='bg-gray-800 p-2 rounded-b-lg w-full text-emerald-600'>
-								{userProfile.playerId}
-							</div>
-						</div>
-						<div className='w-full mx-auto bg-white p-2 rounded-lg text-center flex flex-col justify-center items-center'>
-							<div className='text-[0.7em] bg-gray-700 p-2 rounded-t-lg text-white w-full'>
-								id
-							</div>
-							<div className='bg-gray-800 p-2 rounded-b-lg w-full text-emerald-600 text-[0.8em]'>
-								{userProfile.$id}
 							</div>
 						</div>
 					</div>

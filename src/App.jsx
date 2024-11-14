@@ -3,8 +3,8 @@ import {useDispatch} from 'react-redux';
 import authService from './appwrite/auth.js';
 import {login, logout} from './store/authSlice.js';
 import {useNavigate, Route, Routes} from 'react-router-dom';
-import Container from './Container.jsx'
-
+import Container from './Container.jsx';
+import {SplashScreen} from './components/Index.js';
 
 function App() {
 	const [loading, setLoading] = useState(true);
@@ -29,7 +29,7 @@ function App() {
 
 				console.log(err);
 			})
-			.finally((err) => {
+			.finally(err => {
 				setLoading(false);
 			});
 	}, []);
@@ -37,8 +37,8 @@ function App() {
 	return !loading ? (
 		<Container />
 	) : (
-		<div className='w-full min-h-[100dvh] flex justify-center items-center'>
-			<h1 className='text-4xl'>Loading</h1>
+		<div className='w-full min-h-[100dvh] '>
+			<SplashScreen />
 		</div>
 	);
 }

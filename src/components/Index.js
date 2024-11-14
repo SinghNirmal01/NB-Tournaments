@@ -8,6 +8,9 @@ import TournamentForm from './tournament/TournamentForm.jsx';
 import TournamentList from './tournament/TournamentList.jsx';
 import TournamentCard from './tournament/TournamentCard.jsx';
 import StrengthBar from './StrengthBar.jsx';
+import SkeletonLoader from './skeletonLoader.jsx';
+import SplashScreen from './Loader.jsx';
+import ToggleTheme from './toggleTheme.jsx';
 export {
 	LandingPage,
 	Logo,
@@ -16,5 +19,9 @@ export {
 	Input,
 	StrengthBar,
 	TournamentForm,
-	TournamentList,TournamentCard
+	TournamentList,
+	TournamentCard,
+	SkeletonLoader,
+	SplashScreen,
+	ToggleTheme
 };

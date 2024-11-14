@@ -3,7 +3,7 @@ import {Outlet, Navigate, useNavigate} from 'react-router-dom';
 import {useDispatch, useSelector} from 'react-redux';
 import authService from '../appwrite/auth';
 import profileService from '../appwrite/profileService.js';
-
+import {SplashScreen} from '../components/Index.js';
 import {login as setUser, setProfile} from '../store/authSlice'; // Action to set user in Redux
 
 const PrivateRoutes = () => {
@@ -42,8 +42,8 @@ const PrivateRoutes = () => {
 		};
 		checkUser();
 	}, [dispatch]);
-	
-	return userData ? <Outlet /> : <h1>pr-loading</h1>;
+
+	return userData ? <Outlet /> : <div><SplashScreen /></div>;
 };
 
 export default PrivateRoutes;
